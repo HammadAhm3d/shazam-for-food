@@ -24,7 +24,7 @@ function HeartReact(props) {
             uid: userData.uid,
             recipeId: props.id
         };
-        axios.put(`http://192.168.0.104:5010/recipe/add`, bodyData, {
+        axios.put(`http://192.168.10.3:5010/recipe/add`, bodyData, {
             headers: {
               'Content-Type': 'application/json',
               'Accept': 'application/json'

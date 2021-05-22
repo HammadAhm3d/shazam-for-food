@@ -18,12 +18,12 @@ const FoodGallery = (props) => {
     return (
         <Gallery
         style={{ flex: 1, backgroundColor: 'black' }}
-        // images={[
-        //   { source: require('../assets/banners/food-banner1.jpg'), dimensions: { width: 150, height: 150 } },
+        images={[
+           { source: require('../../assets/banners/food-banner1.jpg'), dimensions: { width: 150, height: 150 } },
         //   { source: require('../assets/banners/food-banner2.jpg'), dimensions: { width: 150, height: 150 } },
         //   { source: require('../assets/banners/food-banner3.jpg'), dimensions: { width: 150, height: 150 } },
         //   { source: require('../assets/banners/food-banner4.jpg'), dimensions: { width: 150, height: 150 } }
-        // ]}
+        ]}
         images={images}
         />
     )

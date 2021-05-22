@@ -149,7 +149,7 @@ const PantryScreen = ({navigation}) => {
 
        const readDataMongo = async () => {
        //  const uri = `http://localhost:3000/pantry/pantry/${user.uid}`
-       const uri = `http://192.168.10.3:3000/pantry/pantry/uO6WUKFb0paef644AoGzliM6OjC2`
+       const uri = `http://192.168.10.3:3000/pantry/pantry/${user.uid}`
           return await fetch(uri)
           .then((response) => response.json())
           .then((result) => {
@@ -159,8 +159,11 @@ const PantryScreen = ({navigation}) => {
            //console.log(recipes.recipe)
            //setQuery("");
            //setAlert("");
+
+           if(result.getwant.length !== 0 ){
            setwant(result.getwant)
            setgot(result.getgot)
+           }
           }
           )
           .catch((error) => {

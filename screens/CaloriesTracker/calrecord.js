@@ -109,11 +109,15 @@ const calrecord = ({navigation}) => {
        .then((response) => response.json())
        .then((result) => {
        // console.log(result)
+       if(result.calorie.length !== 0){
+        
+        
+       
         console.log("read data mongo trig")
         let sortedDates = result.calorie.sort((a, b) => parseDate(b.date) - parseDate(a.date));
 
         setdata(sortedDates)
-        
+       }
        }
        )
        .catch((error) => {

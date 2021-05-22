@@ -71,11 +71,11 @@ const ProfileScreen = ({navigation}) => {
             borderRightColor: '#dddddd',
             borderRightWidth: 1
           }]}>
-            <Title>4</Title>
+            <Title>0</Title>
             <Caption>Saved Recipes</Caption>
           </Layout>
           <Layout style={styles.infoBox}>
-            <Title>2</Title>
+            <Title>0</Title>
             <Caption>Saved Places</Caption>
           </Layout>
       </Layout>

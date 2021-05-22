@@ -122,7 +122,8 @@ const readDataMongo = async () => {
    .then((response) => response.json())
    .then((result) => {
     console.log(result)
-    setcaldata(result.calorie)
+    if(result.calorie.length !== 0){
+    setcaldata(result.calorie)}
     
    }
    )
