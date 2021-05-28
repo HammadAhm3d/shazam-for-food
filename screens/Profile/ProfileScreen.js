@@ -17,6 +17,8 @@ import TopNavProfile from '../../components/TopNavProfile';
 import { AuthContext } from '../../navigation/AuthProvider';
 
 
+import config_ip from "../../config_ip"
+
 const data = [
   "Your Favorites",
   "Tell Your Friends",

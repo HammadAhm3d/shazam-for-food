@@ -8,6 +8,9 @@ import { AuthContext } from '../../navigation/AuthProvider';
 import axios from 'axios';
 import Settings from '../../Settings.js';
 
+import config_ip from "../../config_ip"
+
+
 function Favourites({navigation}) {
     const[loading, setLoading] = React.useState(false);
     const{userData} = React.useContext(AuthContext);

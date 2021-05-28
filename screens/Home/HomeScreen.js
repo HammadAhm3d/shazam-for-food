@@ -15,6 +15,9 @@ import axios from 'axios';
 import FoodList from '../../components/FoodList';
 
 
+import config_ip from "../../config_ip"
+
+
 var User = require('../../back/backend/models/user')
 
 

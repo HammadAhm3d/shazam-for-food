@@ -8,6 +8,9 @@ import RecipeCard from '../../components/RecipeCard';
 import { AuthContext } from '../../navigation/AuthProvider';
 import axios from 'axios';
 
+import config_ip from "../../config_ip"
+
+
 // LogBox.ignoreAllLogs()
 
 

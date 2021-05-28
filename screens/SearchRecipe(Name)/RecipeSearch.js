@@ -11,6 +11,9 @@ import RecipeCard from '../../components/RecipeCard';
 import axios from 'axios';
 import { AuthContext } from '../../navigation/AuthProvider';
 
+import config_ip from "../../config_ip"
+
+
 const RecipeSearch = ({navigation, route}) => {
 
   const[isLoading, setIsLoading] = React.useState(false);

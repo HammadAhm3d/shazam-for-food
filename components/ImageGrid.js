@@ -5,6 +5,8 @@ import FbGrid from "react-native-fb-image-grid";
 import { AuthContext } from '../navigation/AuthProvider';
 
 
+import config_ip from "../config_ip"
+
 
 function ImageGrid({navigation}) {
 

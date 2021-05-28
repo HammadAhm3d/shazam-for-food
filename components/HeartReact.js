@@ -5,6 +5,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon  from 'react-native-vector-icons/Ionicons';
 import { AuthContext } from '../navigation/AuthProvider';
 
+import config_ip from "../config_ip"
+
+
 
 function HeartReact(props) {
     const{userData} = useContext(AuthContext);

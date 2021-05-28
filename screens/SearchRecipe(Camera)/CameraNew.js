@@ -9,6 +9,9 @@ import BurgerLoader from '../../components/loaders/BurgerLoader';
 import Theme from '../../constants/Theme';
 import Settings from '../../Settings';
 import { AuthContext } from '../../navigation/AuthProvider';
+
+import config_ip from "../../config_ip"
+
 // LogBox.ignoreAllLogs()
 
 

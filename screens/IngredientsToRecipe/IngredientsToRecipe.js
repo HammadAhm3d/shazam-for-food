@@ -14,6 +14,9 @@ import CloseButton from '../../components/CloseButton';
 import Settings from '../../Settings'
 import { AuthContext } from '../../navigation/AuthProvider';
 import CameraModal from '../../components/CameraModal';
+
+import config_ip from "../../config_ip"
+
     
 // // LogBox.ignoreAllLogs()
 
