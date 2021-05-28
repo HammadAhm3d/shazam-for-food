@@ -24,7 +24,7 @@ function HeartReact(props) {
         };
 
         if (!heartFilled) {
-            axios.put(`http://192.168.0.103:5010/recipe/add`, bodyData, {
+            axios.put(`http://192.168.0.102:5010/recipe/add`, bodyData, {
                 headers: {
                   'Content-Type': 'application/json',
                   'Accept': 'application/json'
@@ -34,7 +34,7 @@ function HeartReact(props) {
             .catch(e => console.error(e.message));
         }
         else {
-            axios.put(`http://192.168.0.103:5010/recipe/remove`, bodyData, {
+            axios.put(`http://192.168.0.102:5010/recipe/remove`, bodyData, {
                 headers: {
                   'Content-Type': 'application/json',
                   'Accept': 'application/json'

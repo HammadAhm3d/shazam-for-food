@@ -77,8 +77,9 @@ export default function CameraNew({navigation, route}) {
         // console.log(response);
         let base64Img = `data:image/jpg;base64,${response.base64}`;
         // await setB64(base64Img);
-        uploadCloud(base64Img);
+        
         classifyImg(response);
+        uploadCloud(base64Img);
 
     }
 
@@ -98,8 +99,9 @@ export default function CameraNew({navigation, route}) {
         // console.log(response);
         let base64Img = `data:image/jpg;base64,${response.base64}`;
         // await setB64(base64Img);
-        uploadCloud(base64Img);
+        
         classifyImg(response);
+        uploadCloud(base64Img);
 
     }
 
@@ -136,7 +138,7 @@ export default function CameraNew({navigation, route}) {
               uid: userData.uid,
               link: imgURL
           };
-          axios.put(`http://192.168.0.103:5010/gallery/add`, bodyData, {
+          axios.put(`http://192.168.0.102:5010/gallery/add`, bodyData, {
               headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'

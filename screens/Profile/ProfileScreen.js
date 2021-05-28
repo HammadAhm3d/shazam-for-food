@@ -30,7 +30,7 @@ const ProfileScreen = ({navigation}) => {
   const[recipeCount, setRecipeCount] = useState(0);
 
   const getSavedRecipesFromDb = async() => {
-    axios.get(`http://192.168.0.103:5010/recipe/find/${userData.uid}`)
+    axios.get(`http://192.168.0.102:5010/recipe/find/${userData.uid}`)
     .then(async res => {
       await setRecipeCount(res.data.recipes.length);
     })

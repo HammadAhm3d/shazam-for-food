@@ -56,7 +56,7 @@ const IngredientsToRecipe = ({navigation}) => {
   );
 
   const axiosClient = axios.create({
-    baseURL: 'http://192.168.43.123:3000',
+    baseURL: 'http://192.168.0.102:4000',
     timeout: 50000, //50 seconds
   });
 

@@ -49,11 +49,20 @@ const HomeScreen = ({navigation}) => {
     let fullName = user.displayName;
     let nameArray = fullName.split(/\b(\s)/).filter(e => e.trim().length > 0);
     let tmpUser = await user.providerData[0];
+    thisUser = await{
+      uid: tmpUser.uid,
+      firstName: nameArray[0],
+      lastName: nameArray[nameArray.length - 1],
+      email: tmpUser.email,
+      phoneNumber: tmpUser.phone===undefined? null : tmpUser.phone,
+      photoURL: tmpUser.photoURL,
+      providerId: tmpUser.providerId,
+    };
     if (tmpUser.providerId.includes('facebook')) {
       try {
         const currentAccessToken = await AccessToken.getCurrentAccessToken()
       
-        const graphRequest = new GraphRequest('/me', {
+        const graphRequest = await new GraphRequest('/me', {
           accessToken: currentAccessToken.accessToken,
           parameters: {
             fields: {
@@ -75,7 +84,7 @@ const HomeScreen = ({navigation}) => {
               photoURL: result.picture.data.url,
               providerId: tmpUser.providerId,
             };
-            console.log(thisUser);
+            // console.log(thisUser);
             await setUserData(thisUser);
             // setUserData({...userData, photoURL: result.picture.data.url})
           }
@@ -106,7 +115,7 @@ const HomeScreen = ({navigation}) => {
   const fetchAPI2 = async () => {
   //always use the ip address from ipconfig command here with the port number of the backend server!!
   console.log(userData);
-  axios.post('http://192.168.0.103:5010/users/register', thisUser, {
+  axios.post('http://192.168.0.102:5010/users/register', thisUser, {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
