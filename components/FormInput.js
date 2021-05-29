@@ -27,7 +27,7 @@ const FormInput = ({labelValue, placeholderText, iconType,isFieldEmpty, isFieldV
         size="large"
         placeholder={placeholderText}
         textStyle={styles.inputText}
-        status={handleStatus()}
+        status={(handleStatus)()}
         returnKeyType="next"
         accessoryLeft={() => <AntDesign name={iconType} color="#567" size={25}/>}
         {...rest}

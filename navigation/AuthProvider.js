@@ -2,7 +2,9 @@ import React, { createContext, useState } from 'react';
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-community/google-signin';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import axios from 'axios';
 export const AuthContext = createContext();
+
 
 export const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
@@ -69,9 +71,32 @@ export const AuthProvider = ({children}) => {
                     alert(e.message);
                 }
             },
-            register: async (email, password) => {
+            register: async (email, password, firstName, lastName, phone, photoURL) => {
             try {
                 await auth().createUserWithEmailAndPassword(email, password);
+                
+                await auth().onAuthStateChanged((user) => {
+                    if (user) {
+                        let tmp = {
+                            uid: user.uid,
+                            firstName: firstName,
+                            lastName: lastName,
+                            email: email,
+                            phoneNumber: "+9200000",
+                            photoURL: photoURL,
+                            providerId: "email",
+                        }
+                        axios.post('http://192.168.0.102:5010/users/register', tmp, {
+                            headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+
+                            }
+                        })
+                        .then(res => console.log(res.data))
+                        .catch(e => console.log(e.message))
+                    }
+                    });
             } catch (e) {
                 alert(e.message);
             }

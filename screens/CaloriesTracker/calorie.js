@@ -8,7 +8,7 @@ import { TextInput } from 'react-native-paper';
 import AsyncStorage from '@react-native-community/async-storage';
 import DropDownPicker from 'react-native-dropdown-picker';
 import NetInfo from "@react-native-community/netinfo";
-
+import {windowHeight, windowWidth} from '../../utils/Dimentions';
 import config_ip from "../../config_ip"
 
 
@@ -23,6 +23,7 @@ import DatePicker from 'react-native-datepicker'
 
 import {AuthContext} from '../../navigation/AuthProvider';
 import TopNav from '../../components/TopNav';
+import Theme from '../../constants/Theme';
 
 
 // LogBox.ignoreAllLogs()
@@ -54,11 +55,11 @@ const Calorie = ({navigation}) => {
 };
 
 const fetchAPI2 = async () => {
-  return await fetch(`http://${config_ip.DEFAULT_IP}/calorie/adduser1`, requestOptions)
+  return await fetch(`http://192.168.0.102:5010/calorie/adduser1`, requestOptions)
   .then(response => response.json())
   .then(data => console.log(data));
 }
-    onConfirm = async () => {
+    const onConfirm = async () => {
     await setcaldata([
       ...caldata,
       { calories: calorie * serving, foodname: foodName ,serving: serving , type: footype, date: date.toDateString(), key: Math.random().toString()}
@@ -71,7 +72,7 @@ const fetchAPI2 = async () => {
     empty()
   }
 
-   saveData = async () => {
+  const saveData = async () => {
     try {
      await AsyncStorage.setItem(user.uid+"999", JSON.stringify(caldata))
      // console.log(getWant)
@@ -98,7 +99,7 @@ const fetchAPI2 = async () => {
     
 
 
- readData2 = async () => {
+  const readData2 = async () => {
   try {
     
     const userData= await AsyncStorage.getItem(user.uid+"999")
@@ -120,7 +121,7 @@ const fetchAPI2 = async () => {
 
 
 const readDataMongo = async () => {
-  const uri = `http://${config_ip.DEFAULT_IP}/calorie/calorie/${user.uid}`
+  const uri = `http://192.168.0.102:5010/calorie/calorie/${user.uid}`
    return await fetch(uri)
    .then((response) => response.json())
    .then((result) => {
@@ -170,8 +171,8 @@ useEffect(() => {
       <Layout style={{flex: 1}}>
         <TopNav navigation={navigation} screenTitle="Calorie Tracker"/>
       <Layout style= {styles.container}>
-<View style= {{borderWidth: 2,borderColor: '#008b8b', padding: 10, margin: 5,backgroundColor:'#f0f8ff' }}>
-            <Text style= {{fontWeight: "bold", fontSize: 20, fontFamily: "serif",  padding:5, backgroundColor:'#f0f8ff',width: "100%"}}>Add a Record</Text>
+<View style= {{borderWidth: 2,borderColor: '#008b8b', padding: 10, margin: 5,backgroundColor:"#feece6", borderRadius: 50, borderColor: Theme.COLORS.PRIMARY }}>
+            <Text style= {{fontWeight: "bold", fontSize: 20, fontFamily: "serif",  padding:5, width: "100%"}}>Add a Record</Text>
             </View>
 
       <View style= {{
@@ -181,7 +182,7 @@ useEffect(() => {
       borderRadius: 10}}>
 
         <Input
-        style={styles.input}
+        style={styles.inputContainer}
         value={foodName}
         size= 'medium'
         placeholder='Enter Food Name'
@@ -190,6 +191,7 @@ useEffect(() => {
       />
 
       <DropDownPicker
+        containerStyle={{borderRadius: 50, height: windowHeight / 15, margin: 5, width: '100%'}}
         items={[
             {label: 'Breakfast', value: 'Breakfast'},
             {label: 'Lunch', value: 'Lunch'},
@@ -199,12 +201,13 @@ useEffect(() => {
             defaultNull
           placeholder="Select type"
         //defaultIndex={0}
-        containerStyle={{height: 50}}
+        // containerStyle={{height: 50, }}
         onChangeItem={item => setType(item.label)}
 />
       
 
       <Datepicker
+        style={{borderRadius: 50, height: windowHeight / 15, margin: 5, width: '100%'}}
         placeholder= "enter date"
         date={date}
         onSelect={nextDate => setDate(nextDate)}
@@ -212,22 +215,22 @@ useEffect(() => {
       
 
       <Input
-        style={styles.input}
+        style={styles.inputContainer}
         value={calorie}
         placeholder='Enter Calories (kcal)'
         onChangeText={nextValue => setcalories(nextValue)}
       />
 
       <Input
-        style={styles.input}
+        style={styles.inputContainer}
         value={serving}
         placeholder='Enter Total Servings'
         onChangeText={nextValue => setServing(nextValue)}
       />
 
       
-      <Button size='medium' onPress= {()=> onConfirm()} disabled = {calorie.length > 0 && serving.length > 0 ? false : true}>
-        Add
+      <Button style={styles.buttonContainer} onPress= {()=> onConfirm()} disabled = {calorie.length > 0 && serving.length > 0 ? false : true}>
+        <Text style={styles.buttonText}>Add</Text>
       </Button>
 
       {/* <ScrollView  
@@ -256,12 +259,36 @@ useEffect(() => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      padding: 20,
+      margin: 10,
+      alignItems: 'center',
+    },
+    inputContainer: {
+      width: '100%',
+      height: windowHeight / 15,
+      flexDirection: 'row',
+      borderRadius: 5,
+      margin: 5,
+      opacity: 0.9
+    },  
+    buttonText : {
+      fontFamily: 'Nexa Regular',
+      color: "white",
     },
     row: {
       flexDirection: 'row',
       flexWrap: 'wrap',
       // padding: 10
     },
+    buttonContainer: {
+      // paddingTop: 10,
+      width: '95%',
+      // height: windowHeight / 12.5,
+      backgroundColor: Theme.COLORS.PRIMARY,
+      borderColor:Theme.COLORS.PRIMARY,
+      margin: 10,
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: 50,
+    },  
   });
 export default Calorie

@@ -68,7 +68,7 @@ const EditProfileScreen = ({navigation, ...props}) => {
     await setUserData(tmp);
     user.updateProfile({displayName: firstName + ' ' + lastName});
 
-    axios.post(`http://${config_ip.DEFAULT_IP}/users/updateUser`, tmp, {
+    axios.post(`http://192.168.0.102:5010/users/updateUser`, tmp, {
       headers: {
         headers: {
           'Content-Type': 'application/json',

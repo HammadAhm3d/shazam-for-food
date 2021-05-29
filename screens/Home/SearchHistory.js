@@ -5,6 +5,7 @@ import TopNav from '../../components/TopNav';
 import { Layout, ListItem, Divider, List } from '@ui-kitten/components';
 import { AuthContext } from '../../navigation/AuthProvider';
 import axios from 'axios';
+import config_ip from "../../config_ip";
 
 function SearchHistory({navigation}) {
     const[loading, setLoading] = React.useState(false);

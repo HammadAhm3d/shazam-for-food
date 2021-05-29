@@ -36,7 +36,6 @@ const Drawer = createDrawerNavigator();
 
 const AppStack = ({navigation}) => {
     return (
-        
         <Drawer.Navigator 
         drawerContent={props => <DrawerContent {...props} />}
         style={{ flex: 1 }}

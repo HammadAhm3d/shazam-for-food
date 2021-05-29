@@ -65,7 +65,7 @@ const PantryScreen = ({navigation}) => {
       })
   };
     const fetchAPI2 = async () => {
-    return await fetch(`http://${config_ip.DEFAULT_IP}/pantry/adduser1`, requestOptions)
+    return await fetch(`http://192.168.0.102:5010/pantry/adduser1`, requestOptions)
     .then(response => response.json())
     .then(data => console.log(data));
   }
