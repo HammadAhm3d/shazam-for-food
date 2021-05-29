@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import { TouchableOpacity, Platform, StyleSheet, LogBox, Dimensions, ImageBackground, View} from 'react-native';
+import { TouchableOpacity, Platform, StyleSheet, LogBox, Dimensions, ImageBackground, View, Keyboard} from 'react-native';
 import FormInput from '../../components/FormInput';
 import FormButton from '../../components/FormButton';
 import {AuthContext} from '../../navigation/AuthProvider';
@@ -147,6 +147,7 @@ const SignupScreen = ({navigation}) => {
 
   const handleSignup = async() => {
     await setIsLoading(true);
+    Keyboard.dismiss();
     await register(email, password, firstName, lastName, photoURL);
     await setIsLoading(false)
   }
